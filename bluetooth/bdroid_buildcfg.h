@@ -33,7 +33,7 @@
 // skips conn update at conn completion
 #define BTA_BLE_SKIP_CONN_UPD  FALSE
 #define BLE_PERIPHERAL_ADV_NAME  FALSE
-#define BT_CLEAN_TURN_ON_DISABLED 1
+#define BT_CLEAN_TURN_ON_DISABLED TRUE
 #define BTM_SCO_ENHANCED_SYNC_ENABLED FALSE
 
 /* Disable enhanced sco commands */
