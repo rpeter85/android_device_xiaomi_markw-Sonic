@@ -781,9 +781,6 @@ service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqb
 on charger
     load_system_props
 
-on property:init.svc.surfaceflinger=restarting
-    restart vendor.hwcomposer-2-1
-
 on property:vendor.display.lcd_density=*
     setprop ro.sf.lcd_density ${vendor.display.lcd_density}
 
