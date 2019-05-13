@@ -76,11 +76,11 @@ PRODUCT_COPY_FILES += \
 
 # HWUI
 PRODUCT_PROPERTY_OVERRIDES += \
-    dalvik.vm.heapgrowthlimit=288m \
-    dalvik.vm.heapstartsize=8m \
+    dalvik.vm.heapgrowthlimit=256m \
+    dalvik.vm.heapstartsize=16m \
     dalvik.vm.heapsize=768m \
     dalvik.vm.heaptargetutilization=0.75 \
-    dalvik.vm.heapminfree=512k \
+    dalvik.vm.heapminfree=4m \
     dalvik.vm.heapmaxfree=8m
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -215,7 +215,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     camera.msm8953 \
     libmm-qcamera \
-    Snap \
     GoogleCameraMod 
 
 PRODUCT_PACKAGES += \
@@ -258,6 +257,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.opengles.version=196610 \
     ro.sf.lcd_density=440 
 
+# XiaomiParts
+PRODUCT_PACKAGES += \
+    XiaomiParts
+
 # DRM
 PRODUCT_PACKAGES += \
     android.hardware.drm@1.0-impl \
@@ -276,7 +279,7 @@ PRODUCT_PACKAGES += \
     android.hardware.biometrics.fingerprint@2.1-service.xiaomi_markw
 
 # FM
-PRODUCT_PACKAGES += \
+#PRODUCT_PACKAGES += \
     FMRadio \
     libfmjni
 
@@ -537,10 +540,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_BOOT_JARS += \
     WfdCommon
-
-# XiaomiParts
-PRODUCT_PACKAGES += \
-    XiaomiParts
 
 # Inherit proprietary files
 $(call inherit-product-if-exists, vendor/xiaomi/markw/markw-vendor.mk)
