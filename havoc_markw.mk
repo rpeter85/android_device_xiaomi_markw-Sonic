@@ -35,7 +35,7 @@ PRODUCT_NAME := havoc_markw
 BOARD_VENDOR := Xiaomi
 PRODUCT_MANUFACTURER := Xiaomi
 PRODUCT_DEVICE := markw
-PRODUCT_MODEL := Redmi 4
+PRODUCT_MODEL := Redmi 4 Prime
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
