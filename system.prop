@@ -221,3 +221,6 @@ ro.config.alarm_vol_default=3
 
 #add props brightness
 #persist.vendor.max.brightness=530
+
+# Adding Havoc maintainer
+ro.havoc.maintainer=Peter.R
