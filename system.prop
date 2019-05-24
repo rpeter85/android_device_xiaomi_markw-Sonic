@@ -219,6 +219,9 @@ ro.config.media_vol_default=10
 #default alarm volume index
 ro.config.alarm_vol_default=3
 
+#Virtual Display
+debug.sdm.support_writeback=0
+
 #add props brightness
 #persist.vendor.max.brightness=530
 
