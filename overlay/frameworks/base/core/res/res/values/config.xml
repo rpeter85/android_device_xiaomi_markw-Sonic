@@ -631,4 +631,8 @@
     Set to -1 to disable the proximity sensor check at all-->
     <integer name="config_flashlightProximityTimeout">-1</integer>
 
+    <!-- For devices with hardware keys without lights -->
+    <integer name="config_buttonBrightnessSettingDefault">0</integer>
+    <bool name="config_deviceHasVariableButtonBrightness">false</bool>
+
 </resources>
