@@ -39,6 +39,9 @@ PRODUCT_MODEL := Redmi 4 Prime
 
 PRODUCT_GMS_CLIENTID_BASE := android-xiaomi
 
+# Getting official
+HAVOC_BUILD_TYPE = Official
+
 PRODUCT_BUILD_PROP_OVERRIDES += \
     PRIVATE_BUILD_DESC="markw-user 6.0.1 MMB29M V10.2.1.0.MBEMIXM release-keys" \
     TARGET_DEVICE="markw"
