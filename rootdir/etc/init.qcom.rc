@@ -886,6 +886,9 @@ service power_off_alarm /vendor/bin/power_off_alarm
     disabled
     oneshot
 
+# Mounting the configured ZRAM as SWAP
+on property:dev.bootcomplete=1
+    swapon_all /vendor/etc/fstab.qcom
 
 #Make MTU adjusting to D1S-3381 by zhangwei8
 write /proc/sys/net/ipv4/tcp_mtu_probing 1
