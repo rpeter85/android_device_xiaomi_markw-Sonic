@@ -54,6 +54,8 @@ TARGET_KERNEL_ARCH := arm64
 TARGET_KERNEL_CONFIG := olympian_markw_defconfig
 TARGET_KERNEL_SOURCE := kernel/xiaomi/markw
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
+# TARGET_KERNEL_CLANG_COMPILE := true
+# TARGET_KERNEL_CLANG_VERSION := 7.0.0
 
 # ANT+
 BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
