@@ -522,8 +522,7 @@ PRODUCT_PACKAGES += \
     hostapd_cli \
     ipacm \
     IPACM_cfg.xml \
-		liboffloadhal \
-    libqsap_sdk \
+    liboffloadhal \
     libwifi-hal-qcom \
     wificond \
     wpa_supplicant \
