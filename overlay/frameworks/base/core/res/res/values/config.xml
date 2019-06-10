@@ -654,4 +654,7 @@
         <item>10</item>
     </integer-array>
 
+    <!-- Remote server that can provide NTP responses. -->
+    <string translatable="false" name="config_ntpServer">pool.ntp.org</string>
+
 </resources>
