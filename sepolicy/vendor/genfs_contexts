@@ -1,2 +1,6 @@
 # Rmt
 genfscon debugfs /rmt_storage	u:object_r:debugfs_rmt:s0
+
+# LiveDisplay
+genfscon sysfs /devices/virtual/graphics/fb0/dci_p3 u:object_r:sysfs_livedisplay_tuneable:s0
+genfscon sysfs /devices/virtual/graphics/fb0/srgb   u:object_r:sysfs_livedisplay_tuneable:s0
