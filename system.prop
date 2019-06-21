@@ -246,4 +246,4 @@ debug.sdm.support_writeback=0
 
 # Maintainer
 PRODUCT_PROPERTY_OVERRIDES += \
-ro.havoc.maintainer=Peter.R
+ro.havoc.maintainer=Peter\ R.
