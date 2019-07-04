@@ -79,7 +79,9 @@ persist.vendor.data.profile_update=true
 persist.vendor.radio.prefer_spn=1
 
 # System props for time-services
-persist.timed.enable=true
+PRODUCT_PROPERTY_OVERRIDES += \
+persist.vendor.timed.enable=true \
+persist.vendor.delta_time.enable=true
 
 # System prop for Bluetooth SOC type
 #ro.bluetooth.library_name=libbluetooth_qti.so
