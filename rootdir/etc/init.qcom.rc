@@ -135,7 +135,6 @@ on boot
     # Vibrator permissions
     chown root system /sys/devices/virtual/timed_output/vibrator/vtg_level
     chmod 0660 /sys/devices/virtual/timed_output/vibrator/vtg_level
-    
 
     chown system system /proc/touchpanel/capacitive_keys_disable
     chmod 0666 /proc/touchpanel/capacitive_keys_disable
@@ -171,7 +170,6 @@ on boot
 #   Define TCP buffer sizes for various networks
 #   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
     setprop net.tcp.buffersize.wifi    524288,2097152,4194304,262144,524288,1048576
-
 
     setprop ro.telephony.call_ring.multiple false
 
@@ -318,8 +316,6 @@ on post-fs-data
     # Create directory used by display clients
     mkdir /data/vendor/display 0770 system graphics
 
-
-
     # Create directory used by media clients
     mkdir /data/vendor/media 0770 mediacodec media
 
@@ -329,14 +325,8 @@ on post-fs-data
     mkdir /data/vendor/misc/qti_fp/calib_test 0770 system system
     mkdir /data/vendor/misc/qti_fp/database 0770 system system
 
-
-
-
-
     # Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
-
-
 
     # Create directory for voiceprint
     mkdir /data/misc/qvop 0771 system system
@@ -377,8 +367,6 @@ on post-fs-data
     #create ipacm log dir
     mkdir /data/vendor/ipa 0770 radio radio
     chmod 0770 /data/vendor/ipa
-
-
 
     # Create the directories used by CnE subsystem
     mkdir /data/vendor/connectivity 0771 radio radio
@@ -597,7 +585,6 @@ service vendor.cnd /vendor/bin/cnd
     user system
     group system wifi inet radio wakelock net_admin
 
-
 service irsc_util /vendor/bin/irsc_util "/vendor/etc/sec_config"
     class core
     user root
@@ -631,7 +618,6 @@ service vendor.netmgrd /vendor/bin/netmgrd
     class main
     disabled
 
-
 service vendor.ipacm /vendor/bin/ipacm
     class main
     user radio
@@ -643,7 +629,6 @@ service vendor.dataqti /vendor/bin/qti
     user radio
     group radio oem_2901 diag usb net_admin
     disabled
-
 
 service vendor.sensors.qti /vendor/bin/sensors.qti
     class core
@@ -675,7 +660,6 @@ service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     socket vendor_wpa_wlan0 dgram 660 wifi wifi
     disabled
     oneshot
-
 
 on property:persist.vendor.data.shs_ko_load=1
     exec u:r:vendor_modprobe:s0 -- /vendor/bin/modprobe -a -d /vendor/lib/modules rmnet_shs
@@ -736,7 +720,6 @@ service qcom-post-boot /vendor/bin/init.qcom.post_boot.sh
     group root system wakelock graphics
     disabled
     oneshot
-
 
 on property:sys.boot_completed=1
     start qcom-post-boot
@@ -884,7 +867,6 @@ on property:vendor.rild.libpath=*
 
 on property:ro.vendor.radio.noril=*
     setprop ro.radio.noril ${ro.vendor.radio.noril}
-
 
 service power_off_alarm /vendor/bin/power_off_alarm
     class core
