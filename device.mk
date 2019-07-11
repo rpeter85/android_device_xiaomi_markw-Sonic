@@ -111,13 +111,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # Haters gonna hate..
 PRODUCT_CHARACTERISTICS := nosdcard
 
-# ANT+
-PRODUCT_PACKAGES += \
-    AntHalService \
-    libantradio \
-    com.dsi.ant.antradio_library
-
-#Audio
+# Audio
 PRODUCT_PACKAGES += \
     audio.a2dp.default \
     audio.primary.msm8953 \
