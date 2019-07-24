@@ -35,12 +35,12 @@ on early-init
     mount debugfs debugfs /sys/kernel/debug
     chmod 0755 /sys/kernel/debug
 
-  # create symlink for vendor mount points
+# create symlink for vendor mount points
     symlink /vendor/firmware_mnt /firmware
     symlink /vendor/bt_firmware /bt_firmware
     symlink /vendor/dsp /dsp
 
-  # Change ownership of hw_recovery related nodes
+# Change ownership of hw_recovery related nodes
     chown system graphics /sys/kernel/debug/dri/0/debug/dump
     chown system graphics /sys/kernel/debug/dri/0/debug/recovery_reg
     chown system graphics /sys/kernel/debug/dri/0/debug/recovery_dbgbus
@@ -50,13 +50,13 @@ on early-init
     chmod 0620 /dev/kmsg
 
 on init
-    # Set permissions for persist partition
+# Set permissions for persist partition
     mkdir /mnt/vendor/persist 0771 root system
 
-    # Support legacy paths
+# Support legacy paths
     symlink /sdcard /mnt/sdcard
 
-    # Create cgroup mount point for memory
+# Create cgroup mount point for memory
     mkdir /sys/fs/cgroup/memory/bg 0750 root system
     write /sys/fs/cgroup/memory/bg/memory.swappiness 140
     write /sys/fs/cgroup/memory/bg/memory.move_charge_at_immigrate 1
@@ -67,16 +67,16 @@ on post-fs
     chmod 0755 /sys/kernel/debug/tracing
 
 on early-boot
-    # set RLIMIT_MEMLOCK to 64MB
+# set RLIMIT_MEMLOCK to 64MB
     setrlimit 8 67108864 67108864
-    # Allow subsystem (modem etc) debugging
+# Allow subsystem (modem etc) debugging
     write /sys/kernel/boot_adsp/boot 1
     write /sys/kernel/boot_cdsp/boot 1
     write /sys/kernel/boot_slpi/boot 1
     setprop ro.alarm_boot false
     chown root audio /sys/kernel/boot_adsp/boot
 
-    # for backward compatibility
+# for backward compatibility
     chown system system /persist/sensors
     chown system system /persist/sensors/registry
     chown system system /persist/sensors/registry/registry
@@ -132,7 +132,7 @@ on boot
     chown bluetooth net_bt /sys/class/rfkill/rfkill0/device/extldo
     chmod 0660 /sys/class/rfkill/rfkill0/device/extldo
 
-    # Vibrator permissions
+# Vibrator permissions
     chown root system /sys/devices/virtual/timed_output/vibrator/vtg_level
     chmod 0660 /sys/devices/virtual/timed_output/vibrator/vtg_level
 
@@ -145,7 +145,7 @@ on boot
     chown system system /proc/touchpanel/enable_dt2w
     chmod 0664 /proc/touchpanel/enable_dt2w
 
-    #Create QMUX deamon socket area
+# Create QMUX deamon socket area
     mkdir /dev/socket/qmux_radio 0770 radio radio
     chmod 2770 /dev/socket/qmux_radio
     mkdir /dev/socket/qmux_audio 0770 media audio
@@ -162,13 +162,13 @@ on boot
     mkdir /mnt/vendor/persist/time 0770 system system
     restorecon_recursive /mnt/vendor/persist
 
-    #Create NETMGR daemon socket area
+# Create NETMGR daemon socket area
     mkdir /dev/socket/netmgr 0750 radio radio
 
     setprop wifi.interface wlan0
 
-#   Define TCP buffer sizes for various networks
-#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
+# Define TCP buffer sizes for various networks
+# ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
     setprop net.tcp.buffersize.wifi    524288,2097152,4194304,262144,524288,1048576
 
     setprop ro.telephony.call_ring.multiple false
@@ -184,8 +184,8 @@ on boot
 
     chmod 0444 /sys/devices/platform/msm_hsusb/gadget/usb_state
 
-#   Define TCP buffer sizes for various networks
-#   ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
+# Define TCP buffer sizes for various networks
+# ReadMin, ReadInitial, ReadMax, WriteMin, WriteInitial, WriteMax,
     setprop net.tcp.buffersize.default 4096,87380,524288,4096,16384,110208
     setprop net.tcp.buffersize.lte     2097152,4194304,8388608,262144,524288,1048576
     setprop net.tcp.buffersize.umts    4094,87380,110208,4096,16384,110208
@@ -199,36 +199,36 @@ on boot
 
     setprop net.tcp.2g_init_rwnd 10
 
-#   Assign TCP buffer thresholds to be ceiling value of technology maximums
-#   Increased technology maximums should be reflected here.
+# Assign TCP buffer thresholds to be ceiling value of technology maximums
+# Increased technology maximums should be reflected here.
     write /proc/sys/net/core/rmem_max  16777216
     write /proc/sys/net/core/wmem_max  16777216
 
-    # To prevent out of order acknowledgements from making
-    # connection tracking to treat them as not belonging to
-    # the connection they belong to.
-    # Otherwise, a weird issue happens in which some long
-    # connections on high-throughput links get dropped when
-    # an ack packet comes out of order
+# To prevent out of order acknowledgements from making
+# connection tracking to treat them as not belonging to
+# the connection they belong to.
+# Otherwise, a weird issue happens in which some long
+# connections on high-throughput links get dropped when
+# an ack packet comes out of order
     write /proc/sys/net/netfilter/nf_conntrack_tcp_be_liberal 1
 
-    # Set the console loglevel to lesser than KERN_INFO
-    # Set the default message loglevel to KERN_INFO
+# Set the console loglevel to lesser than KERN_INFO
+# Set the default message loglevel to KERN_INFO
     write /proc/sys/kernel/printk "6 6 1 7"
 
-    # Allow access for CCID command/response timeout configuration
+# Allow access for CCID command/response timeout configuration
     chown system system /sys/module/ccid_bridge/parameters/bulk_msg_timeout
 
-    # bond0 used by FST Manager
+# bond0 used by FST Manager
     chown wifi wifi /sys/class/net/bond0/bonding/queue_id
 
-    # Flashlight
+# Flashlight
     chown root system /sys/devices/soc/qpnp-flash-led-24/leds/led:torch_0/max_brightness
     chmod 0660 /sys/devices/soc/qpnp-flash-led-24/leds/led:torch_0/max_brightness
     chown root system /sys/devices/soc/qpnp-flash-led-24/leds/led:torch_1/max_brightness
     chmod 0660 /sys/devices/soc/qpnp-flash-led-24/leds/led:torch_1/max_brightness
 
-    # Goodix Fingerprint
+# Goodix Fingerprint
     chown system system /dev/goodix_fp
     chmod 0644 /dev/goodix_fp
 
@@ -246,7 +246,7 @@ on boot
     setprop persist.sys.fp.vendor none
     start vendor.gx_fpd
 
-    # Allow access to emmc rawdump block partition and dload sysfs node
+# Allow access to emmc rawdump block partition and dload sysfs node
     chown root system /dev/block/bootdevice/by-name/rawdump -p /dev/block/
     chmod 0660 /dev/block/bootdevice/by-name/rawdump -p /dev/block/
     chown root system /sys/kernel/dload/emmc_dload
@@ -261,7 +261,7 @@ on boot
     chown system system /sys/class/backlight/panel0-backlight/brightness
     chown system system /sys/class/backlight/panel0-backlight/max_brightness
 
-    # Allow access to sensors device attributes
+# Allow access to sensors device attributes
     chown system system /sys/class/sensors/MPU6050-accel/enable
     chown system system /sys/class/sensors/MPU6050-accel/poll_delay
     chown system system /sys/class/sensors/MPU6050-gyro/enable
@@ -271,21 +271,21 @@ on boot
     chown system system /sys/class/sensors/apds9930-proximity/enable
     chown system system /sys/class/sensors/apds9930-proximity/poll_delay
 
-    # Create directory used for display
+# Create directory used for display
     mkdir /mnt/vendor/persist/display 0770 system graphics
 
-    # Create vpp directory
+# Create vpp directory
     mkdir /mnt/vendor/persist/vpp 0770 media media
 
-    # Audio amplifier kernel module
+# Audio amplifier kernel module
     chown audioserver system /sys/audio_amplifier/enable
 
     chown wifi wifi /sys/module/wlan/parameters/fwpath
 
-    # Create hvdcp_opti directory
+# Create hvdcp_opti directory
     mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
 
-    # Set SQLite flags for F2FS because some DBs might be opened early
+# Set SQLite flags for F2FS because some DBs might be opened early
     setprop debug.sqlite.journalmode OFF
     setprop debug.sqlite.syncmode OFF
 
@@ -310,28 +310,28 @@ on boot
 on post-fs-data
     mkdir /data/vendor/misc 01771 system system
 
-    # Create directory used for dump collection
+# Create directory used for dump collection
     mkdir /data/vendor/ssrdump 0770 root system
 
-    # Create directory used by display clients
+# Create directory used by display clients
     mkdir /data/vendor/display 0770 system graphics
 
-    # Create directory used by media clients
+# Create directory used by media clients
     mkdir /data/vendor/media 0770 mediacodec media
 
-    #Create directories for Fingerprint
+# Create directories for Fingerprint
     mkdir /data/vendor/misc/qti_fp 0770 system system
     mkdir /data/vendor/misc/qti_fp/bg_estimation 0770 system system
     mkdir /data/vendor/misc/qti_fp/calib_test 0770 system system
     mkdir /data/vendor/misc/qti_fp/database 0770 system system
 
-    # Create directory for TZ Apps
+# Create directory for TZ Apps
     mkdir /data/misc/qsee 0770 system system
 
-    # Create directory for voiceprint
+# Create directory for voiceprint
     mkdir /data/misc/qvop 0771 system system
 
-    #Create folder for Camera
+# Create folder for Camera
     mkdir /data/vendor/camera 0770 camera camera
 
     mkdir /data/media 0770 media_rw media_rw
@@ -341,7 +341,7 @@ on post-fs-data
     mkdir /data/vendor/bluetooth 0770 bluetooth bluetooth
     mkdir /data/vendor/ramdump/bluetooth 0770 bluetooth bluetooth
 
-    # Create the directories used by the Wireless subsystem
+# Create the directories used by the Wireless subsystem
     mkdir /data/vendor/wifi 0770 wifi wifi
     mkdir /data/vendor/wifi/sockets 0770 wifi wifi
     mkdir /data/vendor/wifi/hostapd 0770 wifi wifi
@@ -356,37 +356,37 @@ on post-fs-data
     mkdir /data/misc/dhcp 0777 dhcp dhcp
     chown dhcp dhcp /data/misc/dhcp
 
-    #create port-bridge log dir
+# Create port-bridge log dir
     mkdir /data/vendor/port_bridge 0770 radio radio
     chmod 0770 /data/vendor/port_bridge
 
-    #create netmgr log dir
+# Create netmgr log dir
     mkdir /data/vendor/netmgr 0770 radio radio
     chmod 0770 /data/vendor/netmgr
 
-    #create ipacm log dir
+# Create ipacm log dir
     mkdir /data/vendor/ipa 0770 radio radio
     chmod 0770 /data/vendor/ipa
 
-    # Create the directories used by CnE subsystem
+# Create the directories used by CnE subsystem
     mkdir /data/vendor/connectivity 0771 radio radio
     chown radio radio /data/vendor/connectivity
 
-    # Create directory used by audio subsystem
+# Create directory used by audio subsystem
     mkdir /data/vendor/audio 0770 audio audio
 
-    # Create directory for audio delta files
+# Create directory for audio delta files
     mkdir /data/vendor/audio/acdbdata 0770 media audio
     mkdir /data/vendor/audio/acdbdata/delta 0770 media audio
 
-    # Create directory for radio
+# Create directory for radio
     mkdir /data/vendor/radio 0770 system radio
 
-    # Create directory for modem_config
+# Create directory for modem_config
     mkdir /data/vendor/modem_config 0570 radio root
 
-    # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
-    # We chown/chmod /persist again so because mount is run as root + defaults
+# Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
+# We chown/chmod /persist again so because mount is run as root + defaults
     chown root system /mnt/vendor/persist
     chmod 0771 /mnt/vendor/persist
     chown system system /mnt/vendor/persist/WCNSS_qcom_wlan_nv.bin
@@ -395,17 +395,17 @@ on post-fs-data
     chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
     chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
 
-    # Chown polling nodes as needed from UI running on system server
+# Chown polling nodes as needed from UI running on system server
     chown system system /sys/devices/platform/msm_sdcc.1/polling
     chown system system /sys/devices/platform/msm_sdcc.2/polling
     chown system system /sys/devices/platform/msm_sdcc.3/polling
     chown system system /sys/devices/platform/msm_sdcc.4/polling
 
-    #Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
+# Create the symlink to qcn wpa_supplicant folder for ar6000 wpa_supplicant
     mkdir /data/system 0775 system system
     #symlink /data/misc/wifi/wpa_supplicant /data/system/wpa_supplicant
 
-    #Create directories for Location services
+# Create directories for Location services
     mkdir /data/vendor/location 0770 gps gps
     mkdir /data/vendor/location/mq 0770 gps gps
     mkdir /data/vendor/location/xtwifi 0770 gps gps
@@ -413,43 +413,43 @@ on post-fs-data
     mkdir /dev/socket/location/mq 0770 gps gps
     mkdir /dev/socket/location/xtra 0770 gps gps
 
-    #Create directory from IMS services
+# Create directory from IMS services
     mkdir /data/shared 0755
     chown system system /data/shared
 
-    #Create directory for hostapd
+# Create directory for hostapd
     mkdir /data/hostapd 0770 system wifi
 
-    # Create /data/time folder for time-services
+# Create /data/time folder for time-services
     mkdir /data/vendor/time/ 0700 system system
 
     setprop vold.post_fs_data_done 1
 
-    #Create a folder for SRS to be able to create a usercfg file
+# Create a folder for SRS to be able to create a usercfg file
     mkdir /data/data/media 0770 media media
 
-    #Create FM dir for patchdownloader
+# Create FM dir for patchdownloader
     mkdir /data/vendor/fm 0770 system system
     chmod 0770 /data/vendor/fm
 
-    #Create PERFD deamon related dirs
+# Create PERFD deamon related dirs
     mkdir /data/vendor/perfd 0770 root system
     chmod 2770 /data/vendor/perfd
     rm /data/vendor/perfd/default_values
 
-    #Create IOP  deamon related dirs
+# Create IOP  deamon related dirs
     mkdir /data/vendor/iop 0770 root system
 
-    # Mark the copy complete flag to not completed
+# Mark the copy complete flag to not completed
     write /data/vendor/radio/copy_complete 0
     chown radio radio /data/vendor/radio/copy_complete
     chmod 0660 /data/vendor/radio/copy_complete
 
-    # copy prebuilt qcril.db files always
+# Copy prebuilt qcril.db files always
     copy /vendor/radio/qcril_database/qcril.db /data/vendor/radio/qcril_prebuilt.db
     chown radio radio /data/vendor/radio/qcril_prebuilt.db
     chmod 0660 /data/vendor/radio/qcril_prebuilt.db
-    # File flags for prebuilt ril db file
+# File flags for prebuilt ril db file
     write /data/vendor/radio/prebuilt_db_support 1
     chown radio radio /data/vendor/radio/prebuilt_db_support
     chmod 0400 /data/vendor/radio/prebuilt_db_support
@@ -461,7 +461,7 @@ on post-fs-data
     write /sys/block/dm-0/queue/read_ahead_kb 2048
     write /sys/block/dm-1/queue/read_ahead_kb 2048
 
-    #Create FTM_AP dir for factory test
+# Create FTM_AP dir for factory test
     mkdir /data/FTM_AP 0775 system system
 
 on property:vendor.hw.fm.init=*
@@ -650,8 +650,8 @@ on property:sys.sysctl.tcp_adv_win_scale=*
 service wpa_supplicant /vendor/bin/hw/wpa_supplicant \
     -O/data/vendor/wifi/wpa/sockets -puse_p2p_group_interface=1 -dd \
     -g@android:vendor_wpa_wlan0
-#   we will start as root and wpa_supplicant will switch to user wifi
-#   after setting up the capabilities required for WEXT
+# We will start as root and wpa_supplicant will switch to user wifi
+# after setting up the capabilities required for WEXT
 #   user wifi
 #   group wifi inet keystore
     interface android.hardware.wifi.supplicant@1.0::ISupplicant default
@@ -679,7 +679,7 @@ on property:persist.vendor.data.perf_ko_load=0
 #    group system inet net_admin wifi
 #    capabilities NET_ADMIN
 
-#on property:sys.powerctl=*
+#    on property:sys.powerctl=*
 #    stop cnss-daemon
 
 service dhcpcd_bt-pan /system/bin/dhcpcd -BKLG
@@ -750,7 +750,7 @@ service vendor.wigig_hostapd /vendor/bin/hw/hostapd -dd  -j wigighostapd /data/v
     disabled
 
 on property:ro.data.large_tcp_window_size=true
-    # Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
+# Adjust socket buffer to enlarge TCP receive window for high bandwidth (e.g. DO-RevB)
     write /proc/sys/net/ipv4/tcp_adv_win_scale  2
 
 service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
@@ -762,7 +762,7 @@ service vendor.ril-daemon2 /vendor/bin/hw/rild -c 2
 service vendor.ril-daemon3 /vendor/bin/hw/rild -c 3
     class main
     user radio
-#    disabled
+#   disabled
     group radio cache inet misc audio sdcard_r sdcard_rw diag oem_2901 log
     capabilities BLOCK_SUSPEND NET_ADMIN NET_RAW
 
@@ -878,7 +878,7 @@ service power_off_alarm /vendor/bin/power_off_alarm
 on property:dev.bootcomplete=1
     swapon_all /vendor/etc/fstab.qcom
 
-#Make MTU adjusting to D1S-3381 by zhangwei8
+# Make MTU adjusting to D1S-3381 by zhangwei8
 write /proc/sys/net/ipv4/tcp_mtu_probing 1
 
 service vendor.gx_fpd /vendor/bin/gx_fpd
@@ -886,7 +886,7 @@ service vendor.gx_fpd /vendor/bin/gx_fpd
     user system
     group system drmrpc
 
-# fpc fingerprint section - start
+# Fpc fingerprint section - start
 on property:persist.sys.fp.vendor=switchf
     stop vendor.gx_fpd
     setprop persist.sys.fp.vendor searchf
@@ -895,7 +895,7 @@ on property:persist.sys.fp.vendor=switchf
     setprop ro.hardware.fingerprint fpc
     start vendor.fps_hal
 
-# goodix fingerprint section - start
+# Goodix fingerprint section - start
 on property:persist.sys.fp.vendor=goodix
     setprop persist.sys.fp.goodix 1
     setprop ro.boot.fpsensor gdx
@@ -906,13 +906,13 @@ service vendor.goodix_script /vendor/bin/init.goodix.sh
     class late_start
     user system
     oneshot
-# goodix fingerprint section - end
+# Goodix fingerprint section - end
 
-#Set GPU Opengles version
+# Set GPU Opengles version
 on property:vendor.opengles.version=*
     setprop ro.opengles.version ${vendor.opengles.version}
 
-#Set gpu available frequencies property
+# Set gpu available frequencies property
 on property:vendor.gpu.available_frequencies=*
     setprop ro.vendor.gpu.available_frequencies ${vendor.gpu.available_frequencies}
 
