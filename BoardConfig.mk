@@ -55,9 +55,6 @@ TARGET_KERNEL_CONFIG := olympian_markw_defconfig
 TARGET_KERNEL_SOURCE := kernel/xiaomi/markw
 TARGET_KERNEL_CROSS_COMPILE_PREFIX := aarch64-linux-android-
 
-# ANT+
-BOARD_ANT_WIRELESS_DEVICE := "vfs-prerelease"
-
 # Audio
 AUDIO_FEATURE_ENABLED_ANC_HEADSET := true
 AUDIO_FEATURE_ENABLED_ALAC_OFFLOAD := true
