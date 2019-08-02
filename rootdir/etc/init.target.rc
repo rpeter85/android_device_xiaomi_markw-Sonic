@@ -75,8 +75,8 @@ on post-fs-data
     mkdir /data/misc/dts 0770 media audio
     mkdir /data/vendor/tloc 0700 system drmrpc
 
-   # Add a cpuset for the camera daemon
-   # We want all cores for camera
+# Add a cpuset for the camera daemon
+# We want all cores for camera
     mkdir /dev/cpuset/camera-daemon
     write /dev/cpuset/camera-daemon/cpus 0-7
     write /dev/cpuset/camera-daemon/mems 0
@@ -84,7 +84,7 @@ on post-fs-data
     chown system system /dev/cpuset/camera-daemon/tasks
     chmod 0664 /dev/cpuset/camera-daemon/tasks
 
-#Create folder for mm-qcamera-daemon
+# Create folder for mm-qcamera-daemon
 mkdir /data/vendor/camera 0770 camera camera
 mkdir /data/misc/camera 0770 camera camera
 
@@ -119,7 +119,6 @@ service thermal-engine /vendor/bin/thermal-engine
    socket thermal-send-rule stream 0660 system system
    group root
 
-
 on boot
     start rmt_storage
 
@@ -130,7 +129,7 @@ on boot
     write /dev/cpuset/background/cpus 0-1
     write /dev/cpuset/system-background/cpus 0-3
 
-# Add a cpuset for the camera daemon
+# Add a CPU set for the camera daemon
 # We want all cores for camera
     mkdir /dev/cpuset/camera-daemon
     write /dev/cpuset/camera-daemon/cpus 0-3
@@ -158,7 +157,7 @@ on boot
     chown system system /mnt/vendor/persist/speccfg/submask
     chown system system /mnt/vendor/persist/speccfg/partition
 
-    # init.qcom.sensors.sh
+# init.qcom.sensors.sh
     chmod 0664 /mnt/vendor/persist/sensors/sensors_settings
     chown system system /mnt/vendor/persist/sensors
     start vendor.sensors.qti
@@ -169,7 +168,7 @@ service wcnss-service /vendor/bin/wcnss_service
     group system wifi radio
     oneshot
 
-## imsqmidaemon starts with root and UID will be downgraded to SYSTEM.
+# imsqmidaemon starts with root and UID will be downgraded to SYSTEM.
 service vendor.imsqmidaemon /vendor/bin/imsqmidaemon
     class main
     user system
@@ -262,5 +261,5 @@ on property:sys.shutdown.requested=*
     stop vendor.ims_rtp_daemon
 
 on boot
-    #Ignore modem crash 
+# Ignore modem crash 
     write /sys/bus/msm_subsys/devices/subsys4/restart_level related
