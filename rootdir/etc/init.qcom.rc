@@ -891,5 +891,4 @@ on property:vendor.gpu.available_frequencies=*
     chmod 0660 /sys/kernel/fast_charge/force_fast_charge
 
 # Restart IRQ balancer after boot complete
-    stop vendor.msm_irqbalance
-    start vendor.msm_irqbalance
+    restart vendor.msm_irqbalance
