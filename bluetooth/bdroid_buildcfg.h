@@ -23,7 +23,7 @@
 #include <cutils/properties.h>
 #include <string.h>
 
-#define MAX_ACL_CONNECTIONS    16
+#define MAX_ACL_CONNECTIONS    8
 #define MAX_L2CAP_CHANNELS    16
 #define BLE_VND_INCLUDED   TRUE
 
