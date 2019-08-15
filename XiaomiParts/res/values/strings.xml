@@ -52,9 +52,4 @@
     <string name="extreme_amoled">Extreme Amoled</string>
     <string name="warm_amoled">Warm Amoled</string>
     <string name="hybrid_mamba">Hybrid Mamba</string>
-
-    <!-- usb fastcharge -->
-    <string name="usb_fastcharge_title">USB Fastcharge</string>
-    <string name="fastcharge_title">Enable USB Fastcharge</string>
-    <string name="fastcharge_summary">Use fastcharge when connected to a computer via usb port</string>
 </resources>
