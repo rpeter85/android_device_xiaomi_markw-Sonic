@@ -25,3 +25,6 @@ type sysfs_torch, fs_type, sysfs_type;
 
 # XiaomiParts kcal
 type sysfs_kcal, fs_type, sysfs_type;
+
+# USB Fastcharge
+type sysfs_fastcharge, fs_type, sysfs_type;
