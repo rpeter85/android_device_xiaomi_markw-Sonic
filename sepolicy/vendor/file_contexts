@@ -42,3 +42,6 @@
 
 # Lineage LiveDisplay
 /(vendor|system/vendor)/bin/hw/vendor\.lineage\.livedisplay@2\.0-service\.xiaomi_markw              u:object_r:hal_lineage_livedisplay_qti_exec:s0
+
+# USB Fastcharge
+/sys/kernel/fast_charge(/.*)?		u:object_r:sysfs_fastcharge:s0
