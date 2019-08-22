@@ -15,7 +15,7 @@
 -->
 <resources>
     <string name="app_name">XiaomiParts</string>
-    <string name="advanced_settings">XiaomiParts</string>
+    <string name="advanced_settings">Advanced Settings</string>
     <string name="advanced_settings_summary">Vibrator and Torch</string>
     <string name="category_vibrator">Vibrator</string>
     <string name="vib_strength_title_head">Strength of the vibrator</string>
