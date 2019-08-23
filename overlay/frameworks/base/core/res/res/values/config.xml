@@ -519,7 +519,7 @@
     <bool name="config_useRoundIcon">true</bool>
 
     <!-- Should the pinner service pin the Camera application? -->
-    <bool name="config_pinnerCameraApp">true</bool>
+    <bool name="config_pinnerCameraApp">false</bool>
 
 <!-- Default value for proximity check on screen wake
          NOTE ! - Enable for devices that have a fast response proximity sensor (ideally < 300ms)
