@@ -38,6 +38,9 @@
 #include "vendor_init.h"
 #include "property_service.h"
 
+char const *heapgrowthlimit;
+char const *heapminfree;
+
 using android::base::GetProperty;
 using android::base::ReadFileToString;
 using android::init::property_set;
