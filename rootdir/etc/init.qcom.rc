@@ -277,8 +277,6 @@ on boot
 # Audio amplifier kernel module
     chown audioserver system /sys/audio_amplifier/enable
 
-    chown wifi wifi /sys/module/wlan/parameters/fwpath
-
 # Create hvdcp_opti directory
     mkdir /mnt/vendor/persist/hvdcp_opti 0770 root system
 
