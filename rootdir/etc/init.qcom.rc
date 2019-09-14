@@ -53,9 +53,6 @@ on init
 # Set permissions for persist partition
     mkdir /mnt/vendor/persist 0771 root system
 
-# Support legacy paths
-    symlink /sdcard /mnt/sdcard
-
 on post-fs
     chmod 0755 /sys/kernel/debug/tracing
 
