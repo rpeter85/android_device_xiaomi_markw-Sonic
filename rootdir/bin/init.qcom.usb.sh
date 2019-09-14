@@ -1,5 +1,5 @@
 #!/vendor/bin/sh
-# Copyright (c) 2012-2018, The Linux Foundation. All rights reserved.
+# Copyright (c) 2012-2019, The Linux Foundation. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without
 # modification, are permitted provided that the following conditions are
@@ -96,41 +96,12 @@ if [ "$(getprop persist.vendor.usb.config)" == "" -a \
 		    ;;
 		    *)
 	            case "$target" in
-	              "msm8996")
-	                  setprop persist.vendor.usb.config diag,serial_cdev,serial_tty,rmnet_ipa,mass_storage,adb
-		      ;;
-	              "msm8909")
-		          setprop persist.vendor.usb.config diag,serial_smd,rmnet_qti_bam,adb
-		      ;;
-	              "msm8937")
-			    if [ -d /config/usb_gadget ]; then
-				       setprop persist.vendor.usb.config diag,serial_cdev,rmnet,dpl,adb
-			    else
-			               case "$soc_id" in
-				               "313" | "320")
-				                  setprop persist.vendor.usb.config diag,serial_smd,rmnet_ipa,adb
-				               ;;
-				               *)
-				                  setprop persist.vendor.usb.config diag,serial_smd,rmnet_qti_bam,adb
-				               ;;
-			               esac
-			    fi
-		      ;;
 	              "msm8953")
 			      if [ -d /config/usb_gadget ]; then
 				      setprop persist.vendor.usb.config mtp,adb
 			      else
 				      setprop persist.vendor.usb.config mtp,adb
 			      fi
-		      ;;
-	              "msm8998" | "sdm660" | "apq8098_latv")
-		          setprop persist.vendor.usb.config diag,serial_cdev,rmnet,adb
-		      ;;
-	              "sdm845" | "sdm710")
-		          setprop persist.vendor.usb.config diag,serial_cdev,rmnet,dpl,adb
-		      ;;
-	              "msmnile" | "talos")
-			  setprop persist.vendor.usb.config diag,serial_cdev,rmnet,dpl,qdss,adb
 		      ;;
 	              *)
 		          setprop persist.vendor.usb.config diag,adb
