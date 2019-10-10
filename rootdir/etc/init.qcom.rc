@@ -781,6 +781,19 @@ service vendor.msm_irqbalance /vendor/bin/msm_irqbalance -f /vendor/etc/msm_irqb
 on charger
     load_system_props
 
+# Set offline all cores on charger, except cpu0 and cpu4
+    write /sys/devices/system/cpu/cpu1/online 0
+    write /sys/devices/system/cpu/cpu2/online 0
+    write /sys/devices/system/cpu/cpu3/online 0
+    write /sys/devices/system/cpu/cpu5/online 0
+    write /sys/devices/system/cpu/cpu6/online 0
+    write /sys/devices/system/cpu/cpu7/online 0
+
+# Lock to lowest frequency on charger mode for cpu0 and cpu4
+# so one little and one big core is available
+    write /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor powersave
+    write /sys/devices/system/cpu/cpu4/cpufreq/scaling_governor powersave
+
 on property:vendor.display.lcd_density=*
     setprop ro.sf.lcd_density ${vendor.display.lcd_density}
 
