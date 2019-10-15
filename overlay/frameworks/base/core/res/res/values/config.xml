@@ -581,7 +581,7 @@
             9 - Toggle split screen
          This needs to match the enums in
          sdk/src/java/org/lineageos/internal/util/DeviceKeysConstants.java. -->
-    <integer name="config_longPressOnAppSwitchBehavior">1</integer>
+    <integer name="config_longPressOnAppSwitchBehavior">2</integer>
 
     <!-- Whether to cleanup fingerprints upon connection to the daemon and when user switches -->
     <bool name="config_cleanupUnusedFingerprints">false</bool>
