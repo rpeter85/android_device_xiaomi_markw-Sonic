@@ -412,11 +412,6 @@ PRODUCT_PACKAGES += \
 PRODUCT_PACKAGES += \
     libjson
 
-#QTI performance
-PRODUCT_BOOT_JARS += \
-    QPerformance \
-    UxPerformance
-
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/configs/sec_config:$(TARGET_COPY_OUT_VENDOR)/etc/sec_config
 
@@ -545,9 +540,6 @@ PRODUCT_COPY_FILES += \
 # Wfd
 PRODUCT_PACKAGES += \
     libnl
-
-PRODUCT_BOOT_JARS += \
-    WfdCommon
 
 # Blokada adblocker
 PRODUCT_PACKAGES += \
