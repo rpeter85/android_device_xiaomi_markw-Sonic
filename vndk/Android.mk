@@ -73,3 +73,4 @@ include $(BUILD_PHONY_PACKAGE)
 
 vndk_sp_dir :=
 endif
+endif
