@@ -6,8 +6,6 @@ package com.lineageos.settings.device;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.PorterDuff;
-import android.support.v4.content.res.TypedArrayUtils;
-import android.support.v7.preference.*;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
@@ -15,6 +13,8 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
+import androidx.core.content.res.TypedArrayUtils;
+import androidx.preference.*;
 
 public class ProperSeekBarPreference extends Preference implements SeekBar.OnSeekBarChangeListener,
         View.OnClickListener, View.OnLongClickListener {
@@ -79,7 +79,7 @@ public class ProperSeekBarPreference extends Preference implements SeekBar.OnSee
 
     public ProperSeekBarPreference(Context context, AttributeSet attrs) {
         this(context, attrs, TypedArrayUtils.getAttr(context,
-                android.support.v7.preference.R.attr.preferenceStyle,
+                androidx.preference.R.attr.preferenceStyle,
                 android.R.attr.preferenceStyle));
     }
 

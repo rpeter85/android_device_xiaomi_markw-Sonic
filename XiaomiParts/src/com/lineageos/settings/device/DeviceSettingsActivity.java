@@ -24,11 +24,11 @@ import android.app.DialogFragment;
 import android.app.Fragment;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v14.preference.PreferenceFragment;
-import android.support.v7.preference.PreferenceManager;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import androidx.preference.PreferenceFragment;
+import androidx.preference.PreferenceManager;
 
 public class DeviceSettingsActivity extends Activity {
 
