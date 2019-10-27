@@ -80,7 +80,6 @@ private:
     string mMccmnc;
     bool mXtraThrottle;
     bool mReqStatusReceived;
-    bool mIsConnectivityStatusKnown;
 
     class DelayLocTimer : public LocTimer {
         XtraSystemStatusObserver& mXSSO;
@@ -91,6 +90,7 @@ private:
         }
     } mDelayLocTimer;
 
+    bool mIsConnectivityStatusKnown;
     bool onStatusRequested(int32_t xtraStatusUpdated);
 };
 
